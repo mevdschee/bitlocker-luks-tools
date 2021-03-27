@@ -1,4 +1,4 @@
-# bitlocker-tools
+# BitLocker tools
 
 To open the Local Group Policy Editor, press Windows+R on your keyboard, type “gpedit.msc” into the Run dialog box, and press Enter.
 
