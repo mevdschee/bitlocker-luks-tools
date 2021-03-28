@@ -29,8 +29,7 @@ if [ $? -ne 0 ]; then
 echoerr mount failed
 exit 5
 fi
-find keys -type f -name "*.BEK"
-find keys -type f -name "*.BEK" -exec cp {} /mnt \;
+find keys -type f -name "*.BEK" -exec echo {} \; -exec cp {} /mnt \;
 umount /mnt
 exit 0
 done
