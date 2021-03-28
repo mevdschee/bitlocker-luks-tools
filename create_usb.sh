@@ -1,7 +1,7 @@
 # !/bin/bash
 # change sdX to the right device
 echo Which removable USB drives do you want to ERASE?
-devs=$(lsblk --noheadings --nodeps --output NAME,SIZE,TRAN | sed 's/\s\s*/ /g' | grep "usb$" | cut -d" " --output-delimiter="_" -f1,2)
+devs=$(lsblk --noheadings --nodeps --output NAME,SIZE,RM,TRAN | sed 's/\s\s*/_/g' | grep "1_usb$" | cut -d_ -f1,2)
 echo $devs
 if [ -z $devs ]; then
 echo no removable USB drives found
