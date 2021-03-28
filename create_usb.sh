@@ -9,23 +9,28 @@ echo Which removable USB drives do you want to ERASE?
 select dev in $devs
 do
 dev=$(echo $dev | cut -d'|' -f1)
-spec="start=2048 size=32768 type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B bootable attrs=RequiredPartition" 
+if [ ! -b /dev/$dev ]; then
+echoerr invalid option
+exit 2
+fi
+spec="start=2048 size=32768 type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B bootable attrs=RequiredPartition"
 echo $spec | sfdisk -q --wipe always /dev/${dev} -X gpt
 if [ $? -ne 0 ]; then
 echoerr sfdisk failed, needs sudo?
-exit 2
+exit 3
 fi
 mkfs.fat /dev/${dev}1
 if [ $? -ne 0 ]; then
 echoerr mkfs failed
-exit 3
+exit 4
 fi
 mount /dev/${dev}1 /mnt 
 if [ $? -ne 0 ]; then
 echoerr mount failed
-exit 4
+exit 5
 fi
-find keys -type f -name "*.BEK" -exec cp -v {} /mnt \;
+find keys -type f -name "*.BEK"
+find keys -type f -name "*.BEK" -exec cp {} /mnt \;
 umount /mnt
 exit 0
 done
