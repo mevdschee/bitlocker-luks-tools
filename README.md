@@ -1,8 +1,8 @@
 # BitLocker tools
 
-To open the Local Group Policy Editor, press Windows+R on your keyboard, type “gpedit.msc” into the Run dialog box, and press Enter.
+The power of full disk encryption lies in that it is easy to understand and reason about. Unfortunately this cannot be said about the Windows 10 (professional only) solution, unless you do what I did, as explained in this post:
 
-see: https://www.howtogeek.com/howto/6229/how-to-use-bitlocker-on-drives-without-tpm/
+See: https://tqdev.com/2021-why-i-use-bitlocker-without-tpm
 
 ## create_usb.sh
 
@@ -20,6 +20,8 @@ Demo:
 ## Configure Bitlocker without TPM
 
 To configure Bitlocker without TPM, follow these steps:
+
+source: https://www.howtogeek.com/howto/6229/how-to-use-bitlocker-on-drives-without-tpm/
 
   - Open the Local Group Policy Editor by pressing Windows+R.
   - Type "gpedit.msc" into the Run dialog box, and press Enter.
