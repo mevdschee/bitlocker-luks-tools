@@ -31,6 +31,3 @@ source: https://www.howtogeek.com/howto/6229/how-to-use-bitlocker-on-drives-with
   - Click "OK" to save your changes.
   - You can now close the Group Policy Editor window.
 
-Demo:
-
-![gpedit screencast](gpedit.gif)
