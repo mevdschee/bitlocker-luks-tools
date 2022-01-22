@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 echoerr() { cat <<< "$@" 1>&2; }
 devs=$(lsblk --noheadings --nodeps --output NAME,SIZE,TRAN,RM | sed 's/\s\s*/|/g' | grep "usb|1$")
 if [ -z $devs ]; then
@@ -30,6 +30,7 @@ echoerr mount failed
 exit 5
 fi
 find keys -type f -name "*.BEK" -exec echo {} \; -exec cp {} /mnt \;
+find keys -type f -name "*.lek" -exec echo {} \; -exec cp {} /mnt \;
 umount /mnt
 exit 0
 done
