@@ -38,7 +38,7 @@ To configure Bitlocker without TPM, follow these steps:
 
 source: https://www.howtogeek.com/howto/6229/how-to-use-bitlocker-on-drives-without-tpm/
 
-## Ubuntu - LUKS
+## Ubuntu 20.04 - LUKS
 
 On Linux the TPM is not used. The key file or passphrase is actually used to encrypt the drive (as expected).
 
