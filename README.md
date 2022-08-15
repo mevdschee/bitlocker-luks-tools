@@ -56,7 +56,7 @@ This bash script creates keys for a LUKS enabled machine.
 
 After installing and testing the newly added keys you may remove the initial passphrase (entered during installation) from slot 0.
 
-### Debugging
+### Debugging (for development)
 
 If your script in `/bin/luksunlockusb` contains an error you need to adjust it. 
 To do this boot a Live CD and read-write mount the unencrypted boot partition. 
