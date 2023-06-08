@@ -54,7 +54,7 @@ cat << "EOF" >> "keys/$machinename/install.sh"
 cat << "END" > /bin/luksunlockusb
 #!/bin/sh
 set -e
-if (( $CRYPTTAB_TRIED == 0 )); then
+if [ $CRYPTTAB_TRIED -eq "0" ]; then
     sleep 3
 fi
 if [ ! -e /mnt ]; then
