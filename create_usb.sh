@@ -18,7 +18,7 @@ select dev in $devs; do
         echoerr sfdisk failed, needs sudo?
         exit 3
     fi
-    mkfs.fat /dev/${dev}1
+    mkfs.fat /dev/${dev}1 -n USB_ENC_KEY
     if [ $? -ne 0 ]; then
         echoerr mkfs failed
         exit 4
