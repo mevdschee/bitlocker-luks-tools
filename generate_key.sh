@@ -54,9 +54,11 @@ cat << "EOF" >> "keys/$machinename/install.sh"
 cat << "END" > /bin/luksunlockusb
 #!/bin/sh
 set -e
+if [ $CRYPTTAB_TRIED -eq "0" ]; then
+    sleep 3
+fi
 if [ ! -e /mnt ]; then
     mkdir -p /mnt
-    sleep 3
 fi
 for usbpartition in /dev/disk/by-id/usb-*-part1; do
     usbdevice=$(readlink -f $usbpartition)

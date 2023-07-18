@@ -38,7 +38,7 @@ To configure Bitlocker without TPM, follow these steps:
 
 source: https://www.howtogeek.com/howto/6229/how-to-use-bitlocker-on-drives-without-tpm/
 
-## Ubuntu - LUKS
+## Ubuntu 22.04 - LUKS
 
 On Linux the TPM is not used. The key file or passphrase is actually used to encrypt the drive (as expected).
 
@@ -55,3 +55,21 @@ This bash script creates keys for a LUKS enabled machine.
 - It creates a bash script to install the LUKS keys.
 
 After installing and testing the newly added keys you may remove the initial passphrase (entered during installation) from slot 0.
+
+### Debugging (for development)
+
+If your script in `/bin/luksunlockusb` contains an error you need to adjust it. 
+To do this boot a Live CD and read-write mount the unencrypted boot partition. 
+Copy the `initrd.img` file to you Live CD Desktop folder and open a Terminal there.
+
+Then, expand current initramfs.
+
+    mkdir initrd
+    cd initrd
+    gzip -dc ../initrd.img | cpio -i
+
+And then, change as you like (especially `/bin/luksunlockusb`). After finishing your change, compress it to generate new initramfs using:
+
+    find . | cpio -H newc -o | gzip -9 > ../initrd.img
+    
+Now you have the new initrd.img file that you want to write back to you boot partition (overwrite the existing one).    
